@@ -11,6 +11,7 @@ class AuthRoute extends AuthController
     }
     
     routes() {
+        
         this.router.post('/login', this.login)
         this.router.post('/forgot-password', this.forgotPassword)
 

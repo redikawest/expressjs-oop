@@ -1,16 +1,28 @@
 const express = require('express');
-const admin = require('./admin')
-const web = require('./web')
-const mobile = require('./mobile');
 const AdminRoute = require('./admin');
+const WebRoute = require('./web');
+const MobileRoute = require('./mobile');
 
-const auth = new AdminRoute
+const admin = new AdminRoute
+const web = new WebRoute
+const mobile = new MobileRoute
 
+class Route
+{
 
-const routes = express.Router()
+    constructor() {
+        this.router = express.Router()
+    }
+    
+    routes() {
+        
+        this.router.use('/api/server', admin.routes())
+        this.router.use('/api/web', web.routes())
+        this.router.use('/api/mobile', mobile.routes())
 
-routes.use('/api/server', auth.routes())
-// routes.use('/web', web)
-// routes.use('/mobile', mobile)
+        return this.router
+    }
+    
+}
 
-module.exports = routes
+module.exports = Route
