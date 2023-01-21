@@ -1,20 +1,13 @@
-class AuthLogic
-{
+const AuthInterface = require("../interface/auth.interface")
 
-    async handleLogin(req, res) {
-        try {
-            return "oke"
-        } catch (error) {
-            
-        }
+class AuthLogic extends AuthInterface
+{
+    async login(req, res) {
+        return res.send('login')
     }
 
-    async forgotPassword(req, res) {
-        try {
-            
-        } catch (error) {
-            
-        }
+    async forgotPassword (req, res) {
+        return res.send('forgot password')
     }
 }
 

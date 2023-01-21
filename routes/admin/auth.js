@@ -1,5 +1,7 @@
 const express = require('express')
 const AuthController = require("../../controller/admin/auth.controller")
+const validation = require("../../repository/auth/validation/auth.validation")
+const validate = require('../../utils/validate')
 
 
 class AuthRoute extends AuthController
@@ -12,8 +14,8 @@ class AuthRoute extends AuthController
     
     routes() {
         
-        this.router.post('/login', this.login)
-        this.router.post('/forgot-password', this.forgotPassword)
+        this.router.post('/login', validate(validation.login), this.login)
+        this.router.post('/forgot-password', validate(validation.forgotPassword), this.forgotPassword)
 
         return this.router
     }

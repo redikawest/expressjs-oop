@@ -4,21 +4,11 @@ class AuthController extends AuthLogic
 {
 
     async login(req, res) {
-        try {
-            return res.send('asdasd')
-           let data = await super.handleLogin(req, res)
-           return res.send(data)
-        } catch (error) {
-            
-        }
+        return await super.login(req, res)
     }
 
-    async forgotPassword() {
-        try {
-            
-        } catch (error) {
-            
-        }
+    async forgotPassword(req, res) {
+       return await super.forgotPassword(req, res)
     }
 }
 
